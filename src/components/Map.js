@@ -23,12 +23,13 @@ export default class Map extends Component {
     }
 
     render() {
+        const { coords } = this.state;
         return (
             <ReactMapGL
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({viewport})}>
-                { this.state.coords.map(coord => (
+                { coords.map(coord => (
                     <Marker latitude={coord.latitude} longitude={coord.longitude}>
                         <Pin />
                     </Marker>    
